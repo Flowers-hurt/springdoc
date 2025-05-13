@@ -1,0 +1,53 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="128" height="128" rx="16" fill="#F9FDFB"/>
+  
+  <!-- 大圆 - Spring 标志的圆形基础 -->
+  <circle cx="64" cy="64" r="48" fill="#ECFDF5"/>
+  
+  <!-- 文档元素 -->
+  <path d="M42 34H86C88.2091 34 90 35.7909 90 38V90C90 92.2091 88.2091 94 86 94H42C39.7909 94 38 92.2091 38 90V38C38 35.7909 39.7909 34 42 34Z" fill="white" stroke="#10B981" stroke-width="2"/>
+  
+  <!-- 文档折角 -->
+  <path d="M90 38L76 38V52H90" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+  
+  <!-- 文档线条 -->
+  <path d="M48 52H69" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+  <path d="M48 62H80" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+  <path d="M48 72H80" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+  <path d="M48 82H65" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Spring Logo 元素 - 叶子和螺旋融合 -->
+  <g clip-path="url(#clip0_spring)">
+    <!-- 中心透明圆 -->
+    <circle cx="64" cy="64" r="22" fill="#ECFDF5" stroke="#10B981" stroke-width="2.5"/>
+    
+    <!-- Spring 螺旋主体 -->
+    <path d="M64 42C72 42 82 48 82 64C82 80 72 86 64 86C56 86 46 80 46 64C46 48 56 42 64 42Z" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- 螺旋内部 -->
+    <path d="M64 50C69 50 74 55 74 64" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M64 78C59 78 54 73 54 64" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- 特征叶子 -->
+    <path d="M62 42C66 46 70 42 74 46" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+    <path d="M82 57C86 61 90 57 94 61" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+    <path d="M82 71C86 75 90 71 94 75" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+    <path d="M66 86C70 90 74 86 78 90" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+    <path d="M46 71C42 75 38 71 34 75" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+    <path d="M46 57C42 61 38 57 34 61" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  
+  <!-- JavaDoc @ 符号 -->
+  <circle cx="64" cy="104" r="10" fill="#10B981"/>
+  <circle cx="64" cy="104" r="5" fill="white"/>
+  <path d="M64 99V109" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+  <path d="M59 101.5H69" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- 裁剪路径 -->
+  <defs>
+    <clipPath id="clip0_spring">
+      <rect x="24" y="34" width="80" height="60" rx="4"/>
+    </clipPath>
+  </defs>
+</svg> 
