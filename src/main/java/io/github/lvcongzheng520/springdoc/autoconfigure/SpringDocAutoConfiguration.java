@@ -1,18 +1,21 @@
 package io.github.lvcongzheng520.springdoc.autoconfigure;
 
-import io.github.lvcongzheng520.springdoc.autoconfigure.config.properties.SpringDocProperties;
-import io.github.lvcongzheng520.springdoc.autoconfigure.handler.OpenApiHandler;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.Paths;
-import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.security.SecurityRequirement;
-import lombok.RequiredArgsConstructor;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
 import org.apache.commons.lang3.StringUtils;
-import org.springdoc.core.*;
+import org.springdoc.core.configuration.SpringDocConfiguration;
 import org.springdoc.core.customizers.OpenApiBuilderCustomizer;
-import org.springdoc.core.customizers.OpenApiCustomiser;
+import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springdoc.core.customizers.ServerBaseUrlCustomizer;
+import org.springdoc.core.properties.SpringDocConfigProperties;
 import org.springdoc.core.providers.JavadocProvider;
+import org.springdoc.core.service.OpenAPIService;
+import org.springdoc.core.service.SecurityService;
+import org.springdoc.core.utils.PropertyResolverUtils;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -21,13 +24,15 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.util.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import io.github.lvcongzheng520.springdoc.autoconfigure.config.properties.SpringDocProperties;
+import io.github.lvcongzheng520.springdoc.autoconfigure.handler.OpenApiHandler;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.Paths;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Swagger 文档配置
@@ -35,7 +40,7 @@ import java.util.Set;
  * @author lcz
  */
 @RequiredArgsConstructor
-@Configuration
+@AutoConfiguration
 @EnableConfigurationProperties(SpringDocProperties.class)
 @AutoConfigureBefore(SpringDocConfiguration.class)
 @ConditionalOnProperty(name = "springdoc.api-docs.enabled", havingValue = "true", matchIfMissing = true)
@@ -45,7 +50,7 @@ public class SpringDocAutoConfiguration implements ApplicationListener<WebServer
 
     @Bean
     @ConditionalOnMissingBean(OpenAPI.class)
-    public OpenAPI openApi(SpringDocProperties properties) {
+    public OpenAPI openApi1(SpringDocProperties properties) {
         // 配置校验
         Assert.notNull(properties.getInfo(),"SpringDoc属性配置缺失 -> 文件基本信息[标题、描述、版本、作者、作者信息...]");
         Assert.notNull(properties.getComponents(),"SpringDoc属性配置缺失 -> 组件[例如鉴权方式]");
@@ -55,10 +60,11 @@ public class SpringDocAutoConfiguration implements ApplicationListener<WebServer
         SpringDocProperties.InfoProperties infoProperties = properties.getInfo();
         Info info = convertInfo(infoProperties);
         openApi.info(info);
-        // 扩展文档信息
+        // 扩展文档信息io.swagger.v3.oas.models.tags.Tag
         openApi.externalDocs(properties.getExternalDocs());
         openApi.tags(properties.getTags());
-        openApi.paths(properties.getPaths());
+        openApi.setPaths(properties.getPaths());
+
         openApi.components(properties.getComponents());
         Set<String> keySet = properties.getComponents().getSecuritySchemes().keySet();
         List<SecurityRequirement> list = new ArrayList<>();
@@ -68,7 +74,7 @@ public class SpringDocAutoConfiguration implements ApplicationListener<WebServer
         openApi.security(list);
         return openApi;
     }
-
+    
     private Info convertInfo(SpringDocProperties.InfoProperties infoProperties) {
         Info info = new Info();
         info.setTitle(infoProperties.getTitle());
@@ -95,7 +101,7 @@ public class SpringDocAutoConfiguration implements ApplicationListener<WebServer
      * 对已经生成好的 OpenApi 进行自定义操作
      */
     @Bean
-    public OpenApiCustomiser openApiCustomiser() {
+    public OpenApiCustomizer openApiCustomiser() {
         String contextPath = serverProperties.getServlet().getContextPath();
         String finalContextPath;
         if (StringUtils.isBlank(contextPath) || "/".equals(contextPath)) {
@@ -121,8 +127,9 @@ public class SpringDocAutoConfiguration implements ApplicationListener<WebServer
      * @author lcz
      */
     static class PlusPaths extends Paths {
+		private static final long serialVersionUID = -4552346502669393439L;
 
-        public PlusPaths() {
+		public PlusPaths() {
             super();
         }
 
