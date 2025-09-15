@@ -19,7 +19,7 @@
     <!-- 项目介绍 -->
     <description>基于 javadoc 无注解零入侵生成规范的 openapi 结构体。</description>
     <!-- 项目链接 -->
-    <url>https://github.com/lvcongzheng520/springdoc</url>
+    <url>https://github.com/Flowers-hurt/springdoc</url>
 
 
     <!-- 所有模块 -->
@@ -54,6 +54,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- 依赖版本 -->
+        <knife4j.version>4.4.0</knife4j.version>
         <springdoc.version>2.3.0</springdoc.version>
 
     </properties>
@@ -64,17 +65,17 @@
         <!-- 标签名称 -->
         <tag>master</tag>
         <!-- Git 仓库地址 -->
-        <url>https://github.com/lvcongzheng520/springdoc.git</url>
+        <url>https://github.com/Flowers-hurt/springdoc.git</url>
         <!-- 连接 URL -->
-        <connection>scm:git:https://github.com/lvcongzheng520/springdoc.git</connection>
+        <connection>scm:git:https://github.com/Flowers-hurt/springdoc.git</connection>
         <!-- 开发者连接 URL -->
-        <developerConnection>scm:git:https://github.com/lvcongzheng520/springdoc.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/Flowers-hurt/springdoc.git</developerConnection>
     </scm>
 
     <!-- 作者信息 -->
     <developers>
         <developer>
-            <name>hsqyz</name>
+            <name>Flowers-hurt</name>
             <email>1926585708@qq.com</email>
         </developer>
     </developers>
@@ -90,6 +91,7 @@
 
     <!-- 仓库依赖 -->
     <dependencies>
+
 		<dependency>
 		    <groupId>org.springdoc</groupId>
 		    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -114,6 +116,13 @@
 		    <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
 		    <version>4.4.0</version>
 		</dependency>
+
+        <dependency>
+            <groupId>com.github.therapi</groupId>
+            <artifactId>therapi-runtime-javadoc</artifactId>
+            <version>0.15.0</version>
+        </dependency>
+
     </dependencies>
 
 
