@@ -32,7 +32,7 @@ SpringBoot 3 用这个：
 		<dependency>
 			<groupId>io.github.lvcongzheng520</groupId>
 			<artifactId>springdoc</artifactId>
-			<version>1.0.3</version>
+			<version>2.0.1</version>
 		</dependency>
 ```
 
