@@ -6,12 +6,15 @@
 
 ## 版本支持
 
-目前仅支持Springboot2.x系列的版本。
+springboot 2.x版本 请使用：1.0.3 
+
+springboot 3.x版本 请使用：2.0.1 （感谢[张仕强](https://github.com/zhangslq)贡献支持Boot3版本的代码）
 
 ## 安装依赖
 
-**Maven**
+**Maven / Gradle**
 
+SpringBoot 2 用这个：
 ```xml
 		<dependency>
 			<groupId>io.github.lvcongzheng520</groupId>
@@ -20,11 +23,23 @@
 		</dependency>
 ```
 
-Gradle
+```bash
+implementation group: 'io.github.lvcongzheng520', name: 'springdoc', version: '1.0.3'
+```
+
+SpringBoot 3 用这个：
+```xml
+		<dependency>
+			<groupId>io.github.lvcongzheng520</groupId>
+			<artifactId>springdoc</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+```
 
 ```bash
-implementation group: 'io.github.lvcongzheng520', name: 'springdoc', version: '1.0'
+implementation group: 'io.github.lvcongzheng520', name: 'springdoc', version: '2.0.1'
 ```
+
 
 ## JavaDoc 插件准备
 
@@ -63,6 +78,8 @@ implementation group: 'io.github.lvcongzheng520', name: 'springdoc', version: '1
 ```
 
 ## application 配置
+
+⚠️ 注意：packages-to-scan 每个项目的包结构命名不一样，请自行修改。
 
 ```yaml
 # springdoc-openai 配置
