@@ -41,7 +41,7 @@
     <properties>
 
         <!-- 发布版本 -->
-        <revision>2.0.0</revision>
+        <revision>2.0.1</revision>
 
         <!-- 服务id 也就是setting.xml中的servers.server.id -->
         <serverId>central</serverId>
