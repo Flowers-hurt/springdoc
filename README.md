@@ -8,7 +8,7 @@
 
 springboot 2.x版本 请使用：1.0.3 
 
-springboot 3.x版本 请使用：2.0.1 （感谢[张仕强](https://github.com/zhangslq)贡献支持Boot3版本的代码）
+springboot 3.x版本 请使用：2.0.1 （感谢[zhangslq](https://github.com/zhangslq)贡献支持Boot3版本的代码）
 
 ## 安装依赖
 
@@ -32,7 +32,7 @@ SpringBoot 3 用这个：
 		<dependency>
 			<groupId>io.github.lvcongzheng520</groupId>
 			<artifactId>springdoc</artifactId>
-			<version>1.0.3</version>
+			<version>2.0.1</version>
 		</dependency>
 ```
 
